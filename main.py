@@ -22,12 +22,12 @@ last_touched2 = cap2.touched() # 0000 0000 0000 1111 1111 1111
 
 while True:
     current_touched = cap.touched()
-    current_touched2 = cap2.touched() << 12
-    touched_all = current_touched | current_touched2
+    current_touched2 = cap2.touched() << 12 # 連続したビットにするために12ビットシフトする
+    touched_all = current_touched | current_touched2 # 何かしらのビットが立っていれば触っている判定になる
+
     if touched_all:
         print("anything touch")
 
-'''
     for i in range(24):
         # Each pin is represented by a bit in the touched value.  A value of 1
         # means the pin is being touched, and 0 means it is not being touched.
@@ -45,11 +45,11 @@ while True:
 
         if not current_touched2 & pin_bit and last_touched2 & pin_bit:
             print('{0} released!'.format(i + 12))
-'''
 
     # Update last state and wait a short period before repeating.
     last_touched = current_touched
     last_touched2 = current_touched2
+    time.sleep(0.1)
 
 
 
