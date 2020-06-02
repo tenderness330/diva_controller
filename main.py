@@ -7,6 +7,9 @@ import Adafruit_MPR121.MPR121 as MPR121
 
 cap = MPR121.MPR121()
 cap2 = MPR121.MPR121()
+touch_count = 1
+now_touch = 0b000000000000000000000000
+before_touch = 0b0
 
 # 初期化
 if not cap.begin():
@@ -17,34 +20,53 @@ if not cap2.begin(0x5B):
     print('Error initializing MPR121.  Check your wiring!')
     sys.exit(1)
 
-last_touched = cap.touched()   # 0000 0000 0000 1111 1111 1111
-last_touched2 = cap2.touched() # 1111 1111 1111 0000 0000 0000
+'''
+touchpad1 0000 0000 0000 1111 1111 1111
+touchpad2 1111 1111 1111 0000 0000 0000
+no touch  0000 0000 0000 0000 0000 0000
+'''
 
 while True:
     current_touched = cap.touched()
     current_touched2 = cap2.touched() << 12 # 連続したビットにするために12ビットシフトする
-    touched_all = current_touched | current_touched2 # 何かしらのビットが立っていれば触っている判定になる
+    current_touch_all = current_touched | current_touched2 # 何かしらのビットが立っていれば触っている判定になる
 
-    if touched_all: # なにかタッチがされていたら判定を始める
 
-    for i in range(24):
-        pin_bit = 1 << i # スキャン位置
+    if current_touch_all and touch_count < 2: # なにかタッチがされていたら判定を始める
 
-        if current_touched & pin_bit and not last_touched & pin_bit:
-            print('{0} touched!'.format(i))
+        for i in range(24):
 
-        if current_touched2 & pin_bit and not last_touched2 & pin_bit:
-            print('{0} touched!'.format(i))
+            # 1個めのタッチ判定を求める処理
+            pin_bit = 1 << i # スキャン位置
 
-        if not current_touched & pin_bit and last_touched & pin_bit:
-            print('{0} released!'.format(i))
+            if current_touch_all & pin_bit: # ここ触ってる！判定 今触っているところと判定しようとしているところが同じなら
+                print("nowtouch!")
+                now_touch = pin_bit # 今タッチされているところを保存
+                touch_count = touch_count + 1
 
-        if not current_touched2 & pin_bit and last_touched2 & pin_bit:
-            print('{0} released!'.format(i))
+            print(format(now_touch, '024b'))
+            
+            if now_touch - before_touch > 0:
+                print("<-")
+            elif now_touch - before_touch < 0:
+                print("->")
+            else:
+                print("--")
 
-    # Update last state and wait a short period before repeating.
-    last_touched = current_touched
-    last_touched2 = current_touched2
+
+
+            # 2個めのタッチ判定を求める処理
+            
+    else:
+        # 何も入力がなくなったら使った各変数の初期化
+        touch_count = 0
+        last_touched = current_touched
+        last_touched2 = current_touched2
+        now_touch = 0b000000000000000000000000
+        
+
+
+
     time.sleep(0.1)
 
 
