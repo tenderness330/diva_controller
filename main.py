@@ -39,10 +39,13 @@ while True:
             # 1個めのタッチ判定を求める処理
             pin_bit = 1 << i # スキャン位置
 
-            if current_touch_all & pin_bit: # ここ触ってる！判定 今触っているところと判定しようとしているところが同じなら
-                print("nowtouch!")
+            '''
+            今触っているところと判定しようとしているところが同じ
+            かつ前回と一緒じゃない場合に方向を調整
+            '''
+            if current_touch_all & pin_bit and not before_touch & pin_bit:
                 now_touch = pin_bit # 今タッチされているところを保存
-                touch_count = touch_count + 1
+                before_touch = pin_bit
 
             print(format(now_touch, '024b'))
             
@@ -62,7 +65,6 @@ while True:
         touch_count = 0
         last_touched = current_touched
         last_touched2 = current_touched2
-        now_touch = 0b000000000000000000000000
         
 
 
