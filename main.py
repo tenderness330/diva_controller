@@ -63,6 +63,7 @@ while True:
     else:
         # 何も入力がなくなったら使った各変数の初期化
         touch_count = 0
+        before_touch = now_touch
         last_touched = current_touched
         last_touched2 = current_touched2
         
