@@ -32,7 +32,7 @@ while True:
     current_touch_all = current_touched | current_touched2 # 何かしらのビットが立っていれば触っている判定になる
 
 
-    if current_touch_all and touch_count < 2: # なにかタッチがされていたら判定を始める
+    if current_touch_all
 
         for i in range(24):
 
