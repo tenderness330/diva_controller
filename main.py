@@ -106,9 +106,9 @@ while True:
 
             now_input = last_input
 
-            print("IPPoint:", IPPoint, "IPpoint2:", IPpoint2)
-            print("IPPointvector", IPpoint1_vector)
-            print("IPPointvecto2r", IPpoint1_vector2)
+        print("IPPoint:", IPPoint, "IPpoint2:", IPpoint2)
+        print("IPPointvector", IPpoint1_vector)
+        print("IPPointvecto2r", IPpoint1_vector2)
 
     else:
 
