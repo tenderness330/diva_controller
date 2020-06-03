@@ -63,7 +63,7 @@ while True:
                         pin_bit << 1
                         i = i + 1
 
-                pin_bit << 1
+                pin_bit >> 1
                 i = i - 1
 
             pin_bit << 1
