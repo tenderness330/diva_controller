@@ -14,6 +14,7 @@ touch_ave = 0
 touch_ave_size = 0
 touch_ave2 = 0
 touch_ave_size2 = 0
+pin_bit = 0b0
 
 # 初期化
 if not cap.begin():
