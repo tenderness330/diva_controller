@@ -55,6 +55,7 @@ while True:
                         touch_ave_size2 = touch_ave_size2 + 1
                         pin_bit = pin_bit << 1
                         i = i + 1
+                        print("while", i)
 
                 else:
 
@@ -64,6 +65,7 @@ while True:
                         touch_ave_size = touch_ave_size + 1
                         pin_bit = pin_bit << 1
                         i = i + 1
+                        print("while", i)
 
                 pin_bit = pin_bit >> 1
                 i = i - 1
