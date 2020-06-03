@@ -4,7 +4,7 @@ import wiringpi as pi
 
 import Adafruit_MPR121.MPR121 as MPR121
 
-
+# 各変数初期化
 cap = MPR121.MPR121()
 cap2 = MPR121.MPR121()
 touch_count = 1
@@ -15,6 +15,11 @@ touch_ave_size = 0
 touch_ave2 = 0
 touch_ave_size2 = 0
 pin_bit = 0b0
+
+IPpoint1 = 0
+IPpoint2 = 0
+IPpoint1_vector = 0
+IPpoint2_vector = 0
 
 # 初期化
 if not cap.begin():
