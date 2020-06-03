@@ -43,13 +43,13 @@ while True:
     current_touch_all = current_touched | current_touched2 # 何かしらのビットが立っていれば触っている判定になる
 
 
-    i = 0
     if current_touch_all:
-        while i < 24:
+        i = 1
+        while i < 25:
             if current_touch_all & pin_bit:
                 if touch_ave > 0:
                     while current_touch_all & pin_bit:
-                        # 1つめの判定
+                        # 2つめの判定
                         touch_ave2 = touch_ave2 + i
                         touch_ave_size2 = touch_ave_size2 + 1
                         pin_bit << 1
