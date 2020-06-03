@@ -46,13 +46,14 @@ while True:
     if current_touch_all:
         i = 1
         while i < 25:
+            print("while", i)
             if current_touch_all & pin_bit:
                 if touch_ave > 0:
                     while current_touch_all & pin_bit:
                         # 2つめの判定
                         touch_ave2 = touch_ave2 + i
                         touch_ave_size2 = touch_ave_size2 + 1
-                        pin_bit << 1
+                        pin_bit = pin_bit << 1
                         i = i + 1
 
                 else:
@@ -61,13 +62,13 @@ while True:
                         # 1つめの判定
                         touch_ave = touch_ave + i
                         touch_ave_size = touch_ave_size + 1
-                        pin_bit << 1
+                        pin_bit = pin_bit << 1
                         i = i + 1
 
-                pin_bit >> 1
+                pin_bit = pin_bit >> 1
                 i = i - 1
 
-            pin_bit << 1
+            pin_bit = pin_bit << 1
             if touch_ave2 > 0:
                 i = 24
 
