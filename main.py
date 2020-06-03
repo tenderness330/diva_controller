@@ -45,7 +45,7 @@ while True:
 
     i = 0
     if current_touch_all:
-        while i < 24
+        while i < 24:
             if current_touch_all & pin_bit:
                 if touch_ave > 0:
                     while current_touch_all & pin_bit:
@@ -69,7 +69,7 @@ while True:
 
             pin_bit << 1
             if touch_ave2 > 0:
-                i = 0
+                i = 24
 
         if touch_ave_size != 0:
             touch_ave = touch_ave / touch_ave_size
