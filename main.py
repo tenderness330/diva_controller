@@ -122,7 +122,7 @@ while True:
         touch_ave_size2 = 0
 
 
-    time.sleep(0.1)
+    time.sleep(1)
 
 
 
