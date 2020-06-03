@@ -74,6 +74,8 @@ while True:
             if touch_ave2 > 0:
                 i = 24
 
+            i = i + 1
+
         if touch_ave_size != 0:
             touch_ave = touch_ave / touch_ave_size
         else:
