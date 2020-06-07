@@ -14,7 +14,7 @@ touch_ave = 0
 touch_ave_size = 0
 touch_ave2 = 0
 touch_ave_size2 = 0
-pin_bit = 0b0
+pin_bit = 0b1
 
 IPpoint1 = 0
 IPpoint2 = 0
@@ -80,11 +80,13 @@ while True:
             touch_ave = touch_ave / touch_ave_size
         else:
             touch_ave = 0
+
         if touch_ave_size2 != 0:
             touch_ave2 = touch_ave2 / touch_ave_size2
         else:
             touch_ave2 = 0
 
+        # 前回判定チェック
         if last_touch_ave > 0:
             if touch_ave2 > 0 and touch_ave2 == 0:
                 if abs(last_touch_ave - touch_ave) > 5:
