@@ -46,7 +46,6 @@ while True:
     if current_touch_all:
         i = 1
         while i < 25:
-            print("while", i)
             if current_touch_all & pin_bit:
                 if touch_ave > 0:
                     while current_touch_all & pin_bit:
@@ -122,6 +121,8 @@ while True:
         print("IPPoint1:", IPpoint1, "IPpoint2:", IPpoint2)
         print("IPPointvector", IPpoint1_vector)
         print("IPPointvecto2r", IPpoint2_vector)
+        last_touch_ave = touch_ave
+        last_touch_ave2 = touch_ave2
 
     else:
 
